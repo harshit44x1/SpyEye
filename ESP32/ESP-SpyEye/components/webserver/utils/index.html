@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>SpyEye Controller</title>
+    <style>
+
+        :root {
+            --bg-color: #0c0c0c;
+            --card-color: #1a1a1a;
+            --text-color: #f5f5f7;
+            --text-muted: #9e9e9e;
+            --primary-color: #e40000;
+            --primary-text: #ffffff;
+            --border-color: #333;
+            --error-color: #ff4d4d;
+        }
+
+        @keyframes gradient-animation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background: linear-gradient(-45deg, var(--bg-color), #2d0000, var(--bg-color), #222);
+            background-size: 400% 400%;
+            animation: gradient-animation 25s ease infinite;
+            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 10px;
+        }
+
+        h1, h2, legend {
+            color: var(--text-color);
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .header {
+            text-align: center;
+            padding: 10px 0 30px 0;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 30px;
+        }
+        
+        .logo-art {
+            font-family: "Monaco", "Consolas", "Courier New", monospace;
+            color: var(--primary-color);
+            font-size: 1.2em;
+            font-weight: bold;
+            line-height: 1.2;
+            white-space: pre;
+            margin: 0;
+            text-align: center;
+        }
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 1.1em;
+            margin: -15px 0 0 0;
+        }
+
+
+
+        .card {
+            background-color: var(--card-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+        }
+
+        section {
+            display: none;
+        }
+        
+        #loading, #running {
+            text-align: center;
+            font-size: 1.2em;
+            color: var(--text-muted);
+            padding: 40px;
+        }
+        
+        #running-progress {
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        #errors {
+            background-color: #2b0000;
+            border: 1px solid var(--error-color);
+            color: var(--error-color);
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 500;
+            margin-bottom: 20px;
+            display: block; 
+            visibility: hidden;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+        #errors.visible {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        fieldset {
+            border: none;
+            padding: 0;
+            margin-bottom: 20px;
+        }
+        
+        legend {
+            font-size: 1.4em;
+            color: var(--text-color);
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        button, input[type="number"], select {
+            width: 100%;
+            padding: 14px;
+            margin: 8px 0;
+            background-color: #333;
+            color: var(--text-color);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            box-sizing: border-box; 
+            font-size: 1em;
+        }
+        
+        button {
+            background-color: var(--primary-color);
+            color: var(--primary-text);
+            font-weight: bold;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: all 0.2s ease;
+        }
+
+        button:hover {
+            background-color: #ff3333;
+            box-shadow: 0 0 15px rgba(228, 0, 0, 0.4);
+        }
+        
+        button:active {
+            transform: scale(0.98);
+        }
+
+        input[type="number"], select {
+            background-color: #1f1f1f;
+            border-color: #555;
+        }
+
+
+        .table-container {
+            overflow-x: auto;
+        }
+        
+        table, tr, th, td {
+            border-collapse: collapse;
+            text-align: left;
+        }
+        
+        table#ap-list {
+            width: 100%;
+            margin-bottom: 15px;
+        }
+
+        th {
+            background-color: transparent;
+            color: var(--primary-color);
+            padding: 12px 15px;
+            text-transform: uppercase;
+            font-size: 0.9em;
+            letter-spacing: 1px;
+            border-bottom: 2px solid var(--primary-color);
+        }
+
+        td {
+            padding: 14px 15px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        tr {
+            background-color: var(--card-color);
+            transition: background-color 0.2s ease;
+        }
+
+        tr:hover, tr.selected {
+            background-color: #3d0000;
+            cursor: pointer;
+        }
+        tr.selected td {
+            color: var(--primary-color);
+        }
+
+
+        #result-meta {
+            font-size: 1.1em;
+            color: var(--text-muted);
+            border-bottom: 1px dashed var(--border-color);
+            padding-bottom: 15px;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        #result-content pre,
+        #result-content code {
+            font-family: "Monaco", "Consolas", "Courier New", monospace;
+            background-color: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 15px;
+            display: block;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            color: #f0f0f0;
+        }
+        #result-content code {
+             color: #ffb3b3;
+        }
+
+        #result-content a {
+            color: var(--primary-color);
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-block;
+            padding: 10px 15px;
+            border: 1px solid var(--primary-color);
+            border-radius: 5px;
+            margin: 5px 0;
+            transition: all 0.2s ease;
+        }
+        #result-content a:hover {
+            background-color: var(--primary-color);
+            color: var(--primary-text);
+        }
+        
+
+        .footer {
+            text-align: center;
+            padding-top: 30px;
+            margin-top: 30px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer .copyright {
+            color: var(--text-muted);
+            font-size: 0.9em;
+            margin: 0;
+            padding: 10px 0;
+        }
+        
+        
+        
+        @media (max-width: 600px) {
+            .logo-art {
+                font-size: 0.8em; 
+                line-height: 1.3;
+            }
+            .card {
+                padding: 15px;
+            }
+            .container {
+                padding: 0 5px;
+            }
+            legend {
+                font-size: 1.2em;
+            }
+            th, td {
+                font-size: 0.8em; 
+                padding: 10px 5px; 
+            }
+        }
+
+    </style>
+</head>
+<body onLoad="getStatus()">
+
+    <div class="container">
+        
+        <header class="header">
+            <pre class="logo-art">
+ _____             _______   _______ 
+/  ___|           |  ___\ \ / /  ___|
+\ `--. _ __  _   _| |__  \ V /| |__  
+ `--. \ '_ \| | | |  __|  \ / |  __| 
+/\__/ / |_) | |_| | |___  | | | |___ 
+\____/| .__/ \__, \____/  \_/ \____/ 
+      | |     __/ |                  
+      |_|    |___/                   
+            </pre>
+            <h2 class="subtitle">By Delta-Sec</h2>
+        </header>
+        <section id="errors"></section>
+        
+        <section id="loading" class="card">
+            Loading Controller... Please Wait
+        </section>
+
+        <section id="ready" class="card">
+            
+            <form onSubmit="runAttack(); return false;">
+                <fieldset>
+                    <legend>Select Target</legend>
+                    <div class="table-container">
+                        <table id="ap-list">
+                            </table>
+                    </div>
+                    <button type="button" onClick="refreshAps()">Refresh AP List</button>
+                </fieldset>
+                
+                <fieldset>
+                    <legend>Attack Parameters</legend>
+                    <p>
+                        <label for="attack_type">Attack Type</label>
+                        <select id="attack_type" onChange="updateConfigurableFields(this)" required>
+                            <option value="0" title="This type is not implemented yet." disabled>ATTACK_TYPE_PASSIVE</option>
+                            <option value="1">ATTACK_TYPE_HANDSHAKE</option>
+                            <option value="2" selected>ATTACK_TYPE_PMKID</option>
+                            <option value="3">ATTACK_TYPE_DOS</option>
+                        </select>
+                    </p>
+                    <p>
+                        <label for="attack_method">Attack Method</label>
+                        <select id="attack_method" required disabled>
+                            <option value="" selected disabled hidden>NOT AVAILABLE</option>
+                        </select>
+                    </p>
+                    <p>
+                        <label for="attack_timeout">Attack Timeout (seconds)</label>
+                        <input type="number" min="0" max="255" id="attack_timeout" value="" required/>
+                    </p>
+                    <p>
+                        <button>Launch Attack</button>
+                    </p>
+                </fieldset>
+            </form>
+        </section>
+        
+        <section id="running" class="card">
+            <h2>Attack in Progress...</h2>
+            <br>
+            Time elapsed: <span id="running-progress"></span>
+        </section>
+        
+        <section id="result" class="card">
+            <h2>Attack Result</h2>
+            <div id="result-meta">Loading result.. Please wait</div>
+            <div id="result-content"></div>
+            <button type="button" onClick="resetAttack()">New Attack</button>
+        </section>
+        
+        <footer class="footer">
+            <p class="copyright">Copyright © 2025 Delta Security. All Rights Reserved</p>
+        </footer>
+        </div>
+
+    <script>
+    var AttackStateEnum = { READY: 0, RUNNING: 1, FINISHED: 2, TIMEOUT: 3};
+    var AttackTypeEnum = { ATTACK_TYPE_PASSIVE: 0, ATTACK_TYPE_HANDSHAKE: 1, ATTACK_TYPE_PMKID: 2, ATTACK_TYPE_DOS: 3};
+    var selectedApElement = -1;
+    var poll;
+    var poll_interval = 1000;
+    var running_poll;
+    var running_poll_interval = 1000;
+    var attack_timeout = 0;
+    var time_elapsed = 0;
+    var defaultResultContent = document.getElementById("result").innerHTML;
+    var defaultAttackMethods = document.getElementById("attack_method").outerHTML;
+    
+    function getStatus() {
+        var oReq = new XMLHttpRequest();
+        oReq.onload = function() {
+            var arrayBuffer = oReq.response;
+            if(arrayBuffer) {
+                var attack_state = parseInt(new Uint8Array(arrayBuffer, 0, 1));
+                var attack_type = parseInt(new Uint8Array(arrayBuffer, 1, 1));
+                var attack_content_size = parseInt(new Uint16Array(arrayBuffer, 2, 1));
+                var attack_content = new Uint8Array(arrayBuffer, 4);
+                console.log("attack_state=" + attack_state + "; attack_type=" + attack_type + "; attack_count_size=" + attack_content_size);
+                var status = "ERROR: Cannot parse attack state.";
+                hideAllSections();
+                switch(attack_state) {
+                    case AttackStateEnum.READY:
+                        showAttackConfig();
+                        break;
+                    case AttackStateEnum.RUNNING:
+                        showRunning();
+                        console.log("Poll");
+                        setTimeout(getStatus, poll_interval);
+                        break;
+                    case AttackStateEnum.FINISHED:
+                        showResult("FINISHED", attack_type, attack_content_size, attack_content);
+                        break;
+                    case AttackStateEnum.TIMEOUT:
+                        showResult("TIMEOUT", attack_type, attack_content_size, attack_content);
+                        break;
+                    default:
+                        showError("Error loading attack status! Unknown state.");
+                }
+                return;
+            }
+        };
+        oReq.onerror = function() {
+            console.log("Request error");
+            showError("Cannot reach ESP32. Check that you are connected to management AP. You might get disconnected during attack.");
+            setTimeout(getStatus, poll_interval * 3);
+        };
+        oReq.ontimeout = function() {
+            console.log("Request timeout");
+            showError("Request timeout. Retrying...");
+            getStatus();  
+        };
+        oReq.open("GET", "http://192.168.33.1/status", true);
+        oReq.responseType = "arraybuffer";
+        oReq.send();
+    }
+    
+    function showError(message) {
+        var errorEl = document.getElementById("errors");
+        errorEl.innerHTML = message;
+        errorEl.classList.add("visible");
+    }
+
+    function hideError() {
+        var errorEl = document.getElementById("errors");
+        errorEl.classList.remove("visible");
+    }
+    
+    function hideAllSections(){
+        for(let section of document.getElementsByTagName("section")){
+            section.style.display = "none";
+        };
+        hideError(); 
+    }
+    function showRunning(){
+        hideAllSections();
+        document.getElementById("running").style.display = "block";
+    }
+    function countProgress(){
+        if(time_elapsed >= attack_timeout){
+            showError("Please reconnect to management AP");
+            clearInterval(running_poll);
+        }
+        document.getElementById("running-progress").innerHTML = time_elapsed + "/" + attack_timeout + "s";
+        time_elapsed++;
+    }
+    function showAttackConfig(){
+        hideAllSections(); 
+        document.getElementById("ready").style.display = "block";
+        refreshAps();
+    }
+    function showResult(status, attack_type, attack_content_size, attack_content){
+        hideAllSections();
+        clearInterval(poll);
+        document.getElementById("result").innerHTML = defaultResultContent;
+        document.getElementById("result").style.display = "block";
+        document.getElementById("result-meta").innerHTML = "STATUS: " + status + "<br>";
+        type = "ERROR: Cannot parse attack type.";
+        switch(attack_type) {
+            case AttackTypeEnum.ATTACK_TYPE_PASSIVE:
+                type = "ATTACK_TYPE_PASSIVE";
+                break;
+            case AttackTypeEnum.ATTACK_TYPE_HANDSHAKE:
+                type = "ATTACK_TYPE_HANDSHAKE";
+                resultHandshake(attack_content, attack_content_size);
+                break;
+            case AttackTypeEnum.ATTACK_TYPE_PMKID:
+                type = "ATTACK_TYPE_PMKID";
+                resultPmkid(attack_content, attack_content_size);
+                break;
+            case AttackTypeEnum.ATTACK_TYPE_DOS:
+                type = "ATTACK_TYPE_DOS";
+                break;
+            default:
+                type = "UNKNOWN";
+        }
+        document.getElementById("result-meta").innerHTML += "TYPE: " + type + "<br>";
+    }
+    function refreshAps() {
+        document.getElementById("ap-list").innerHTML = "<tr><td colspan='3' style='text-align:center; color: var(--text-muted);'>Scanning... this may take a while...</td></tr>";
+        var oReq = new XMLHttpRequest();
+        oReq.onload = function() {
+            document.getElementById("ap-list").innerHTML = "<tr><th>SSID</th><th>BSSID</th><th>RSSI</th></tr>";
+            var arrayBuffer = oReq.response;
+            if(arrayBuffer && arrayBuffer.byteLength > 0) {
+                var byteArray = new Uint8Array(arrayBuffer);
+                for (let i = 0; i < byteArray.byteLength; i = i + 40) {
+                    var tr = document.createElement('tr');
+                    tr.setAttribute("id", i / 40);
+                    tr.setAttribute("onClick", "selectAp(this)");
+                    var td_ssid = document.createElement('td');
+                    var td_rssi = document.createElement('td');
+                    var td_bssid = document.createElement('td');
+                    var ssid_bytes = byteArray.subarray(i + 0, i + 32);
+                    var ssid_end = ssid_bytes.indexOf(0);
+                    if (ssid_end == -1) ssid_end = 32;
+                    td_ssid.innerHTML = new TextDecoder("utf-8").decode(ssid_bytes.subarray(0, ssid_end));
+
+                    tr.appendChild(td_ssid);
+                    for(let j = 0; j < 6; j++){
+                        td_bssid.innerHTML += uint8ToHex(byteArray[i + 33 + j]) + (j < 5 ? ":" : "");
+                    }
+                    tr.appendChild(td_bssid);
+                    td_rssi.innerHTML = byteArray[i + 39] - 255;
+                    tr.appendChild(td_rssi);
+                    document.getElementById("ap-list").appendChild(tr);
+                }
+            } else {
+                 document.getElementById("ap-list").innerHTML = "<tr><td colspan='3' style='text-align:center; color: var(--text-muted);'>No networks found.</td></tr>";
+            }
+        };
+        oReq.onerror = function() {
+            document.getElementById("ap-list").innerHTML = "<tr><td colspan='3' style='text-align:center; color: var(--error-color);'>ERROR: Could not fetch AP list.</td></tr>";
+        };
+        oReq.open("GET", "http://192.168.33.1/ap-list", true);
+        oReq.responseType = "arraybuffer";
+        oReq.send();
+    }
+    function selectAp(el) {
+        console.log(el.id);
+        if(selectedApElement != -1 && document.getElementById(selectedApElement.id)){
+            selectedApElement.classList.remove("selected")
+        }
+        selectedApElement=el;
+        el.classList.add("selected");
+    }
+    function runAttack() {
+        if(selectedApElement == -1){
+            console.log("No AP selected. Attack not started.");
+            showError("No AP selected. Attack not started.");
+            return;
+        }
+        hideAllSections();
+        document.getElementById("running").style.display = "block";
+        var arrayBuffer = new ArrayBuffer(4);
+        var uint8Array = new Uint8Array(arrayBuffer);
+        uint8Array[0] = parseInt(selectedApElement.id);
+        uint8Array[1] = parseInt(document.getElementById("attack_type").value);
+        uint8Array[2] = parseInt(document.getElementById("attack_method").value);
+        uint8Array[3] = parseInt(document.getElementById("attack_timeout").value);
+        var oReq = new XMLHttpRequest();
+        oReq.open("POST", "http://192.168.33.1/run-attack", true);
+        oReq.send(arrayBuffer);
+        getStatus();
+        attack_timeout = parseInt(document.getElementById("attack_timeout").value);
+        time_elapsed = 0;
+        running_poll = setInterval(countProgress, running_poll_interval);
+    }
+    function resetAttack(){
+        hideAllSections();
+        showAttackConfig();
+        var oReq = new XMLHttpRequest();
+        oReq.open("HEAD", "http://192.168.33.1/reset", true);
+        oReq.send();
+    }
+    function resultPmkid(attack_content, attack_content_size){
+        var mac_ap = "";
+        var mac_sta = "";
+        var ssid = "";
+        var ssid_text = "";
+        var pmkid = "";
+        var index = 0;
+        for(let i = 0; i < 6; i = i + 1) {
+            mac_ap += uint8ToHex(attack_content[index + i]) + (i < 5 ? ":" : "");
+        }
+        index = index + 6;
+        for(let i = 0; i < 6; i = i + 1) {
+            mac_sta += uint8ToHex(attack_content[index + i]) + (i < 5 ? ":" : "");
+        }
+        index = index + 6;
+
+        
+        var ssid_len = attack_content[index];
+        var ssid_bytes = attack_content.subarray(index + 1, index + 1 + ssid_len);
+        for(let i = 0; i < ssid_len; i = i + 1) {
+            ssid += uint8ToHex(ssid_bytes[i]);
+        }
+        try {
+            ssid_text = new TextDecoder("utf-8").decode(ssid_bytes);
+        } catch (e) {
+            ssid_text = "N/A (Invalid UTF-8)";
+        }
+
+        index = index + ssid_len + 1;
+        
+        var pmkid_hex = "";
+        var hashcat_str = "";
+        
+        var pmkid_bytes_len = attack_content_size - index;
+        if(pmkid_bytes_len > 0) {
+            var pmkid_bytes = attack_content.subarray(index);
+            for(let i = 0; i < pmkid_bytes_len; i = i + 1) {
+                pmkid_hex += uint8ToHex(pmkid_bytes[i]);
+            }
+            hashcat_str = pmkid_hex + "*" + mac_ap.replace(/:/g,'') + "*" + mac_sta.replace(/:/g,'')  + "*" + ssid;
+        }
+
+        document.getElementById("result-content").innerHTML = "";
+        document.getElementById("result-content").innerHTML += "<p>MAC AP: <code>" + mac_ap + "</code></p>";
+        document.getElementById("result-content").innerHTML += "<p>MAC STA: <code>" + mac_sta + "</code></p>";
+        document.getElementById("result-content").innerHTML += "<p>(E)SSID: <code>" + ssid_text + " (" + ssid + ")</code></p>";
+        
+        if(hashcat_str) {
+            document.getElementById("result-content").innerHTML += "<p>PMKID: <code>" + pmkid_hex + "</code></p>";
+            document.getElementById("result-content").innerHTML += "<p>Hashcat (mode 16800):<br><code>" + hashcat_str + "</code></p>";
+        } else {
+            document.getElementById("result-content").innerHTML += "<p>PMKID: <b>Not captured</b></p>";
+        }
+    }
+    function resultHandshake(attack_content, attack_content_size){
+        document.getElementById("result-content").innerHTML = "";
+        var pcap_link = document.createElement("a");
+        pcap_link.setAttribute("href", "capture.pcap");
+        pcap_link.text = "Download PCAP file";
+        var hccapx_link = document.createElement("a");
+        hccapx_link.setAttribute("href", "capture.hccapx");
+        hccapx_link.text = "Download HCCAPX file";
+        document.getElementById("result-content").innerHTML += "<p>" + pcap_link.outerHTML + "</p>";
+        document.getElementById("result-content").innerHTML += "<p>" + hccapx_link.outerHTML + "</p>";
+        var handshakes = "";
+        for(let i = 0; i < attack_content_size; i = i + 1) {
+            handshakes += uint8ToHex(attack_content[i]);
+            if(i % 50 == 49) {
+                handshakes += "\n";
+            }
+        }
+        document.getElementById("result-content").innerHTML += "<pre><code>" + handshakes + "</code></pre>";
+    }
+    function uint8ToHex(uint8){
+        return ("00" + uint8.toString(16)).slice(-2);
+    }
+    function updateConfigurableFields(el){
+        document.getElementById("attack_method").outerHTML = defaultAttackMethods;
+        document.getElementById("attack_method").disabled = true;
+        
+        switch(parseInt(el.value)){
+            case AttackTypeEnum.ATTACK_TYPE_PASSIVE:
+                console.log("PASSIVE configuration");
+                break;
+            case AttackTypeEnum.ATTACK_TYPE_HANDSHAKE:
+                console.log("HANDSHAKE configuration");
+                document.getElementById("attack_timeout").value = 60;
+                setAttackMethods(["DEAUTH_ROGUE_AP (PASSIVE)", "DEAUTH_BROADCAST (ACTIVE)", "CAPTURE_ONLY (PASSIVE)"]);
+                break;
+            case AttackTypeEnum.ATTACK_TYPE_PMKID:
+                console.log("PMKID configuration");
+                document.getElementById("attack_timeout").value = 33;
+                
+                break;
+            case AttackTypeEnum.ATTACK_TYPE_DOS:
+                console.log("DOS configuration");
+                document.getElementById("attack_timeout").value = 120;
+                setAttackMethods(["DEAUTH_ROGUE_AP (PASSIVE)", "DEAUTH_BROADCAST (ACTIVE)", "DEAUTH_COMBINE_ALL"]);
+                break;
+            default:
+                console.log("Unknown attack type");
+                break;
+        }
+    }
+    function setAttackMethods(attackMethodsArray){
+        var select = document.getElementById("attack_method");
+        select.innerHTML = ""; 
+        select.removeAttribute("disabled");
+        attackMethodsArray.forEach(function(method, index){
+            let option = document.createElement("option");
+            option.value = index;
+            option.text = method;
+            select.appendChild(option);
+        });
+        select.selectedIndex = 0;
+    }
+    
+    updateConfigurableFields(document.getElementById("attack_type"));
+    </script>
+</body>
+</html>
