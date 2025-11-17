@@ -130,6 +130,6 @@ To maintain consistency in the codebase, we adhere to the following styles:
 
 * Python: We follow PEP 8. Please run a linter (like flake8) over your code before submitting.
 
-* C (ESP-IDF): We follow the official Espressif IDF C Code Style.
+* C (ESP-IDF): We follow the official [Espressif IDF C Code Style](https://docs.espressif.com/projects/esp-idf/en/v4.4/esp32/contribute/style-guide.html).
 
 By contributing to SpyEye, you agree that your contributions will be licensed under its [MIT License](https://github.com/Delta-Sec/SpyEye/?tab=MIT-1-ov-file).
