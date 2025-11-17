@@ -138,10 +138,8 @@ The following table and diagram illustrate the complex interaction between the C
 ```
 
 ---
-
-<h2 style="color: #4CAF50; border-bottom: 2px solid #4CAF50; padding-bottom: 10px;">
-  🛠️ Requirements and Deployment Guide
-</h2>
+<details>
+<summary><strong>🛠️ Requirements and Deployment Guide (Click to Expand)</strong></summary>
 
 ### Hardware Requirements (Mandatory for Full Functionality)
 
@@ -227,7 +225,7 @@ With the hardware connected and the software installed, the framework is ready f
     *   **[CONFIG]:** Run the configuration wizard to select your Rogue AP interface and Monitoring interface.
     *   **[ESP32 Control]:** Connect to the ESP32 by selecting its serial port (e.g., `/dev/ttyUSB0`).
     *   **[START]:** Launch the full Hybrid Attack Chain (Rogue AP + Captive Portal + ESP32 Attacks).
-
+</details>
 ---
 
 <h2 style="color: #00BCD4; border-bottom: 2px solid #00BCD4; padding-bottom: 10px;">
