@@ -165,7 +165,7 @@ The framework's power is unlocked with the correct hardware configuration.
 *   **Driver Support:**
     *   The primary requirement for the C2 host is a driver compatible with `hostapd` (AP mode).
     ```
-    Driver for Packet Injection: [DRIVER_REPO_NAME]
+    Driver for Packet Injection: https://github.com/aircrack-ng/rtl8188eus
     ```
 
 ### Software Requirements
