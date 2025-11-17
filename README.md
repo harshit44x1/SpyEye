@@ -139,7 +139,7 @@ The following table and diagram illustrate the complex interaction between the C
 
 ---
 <details>
-<summary><strong>🛠️ Requirements and Deployment Guide (Click to Expand)</strong></summary>
+<summary><strong><h2 style="color: #9C27B0; border-bottom: 2px solid #9C27B0; padding-bottom: 10px;">🛠️ Requirements and Deployment Guide (Click to Expand)</h2></strong></summary>
 
 ### Hardware Requirements (Mandatory for Full Functionality)
 
