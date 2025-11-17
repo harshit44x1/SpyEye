@@ -123,6 +123,7 @@ idf.py -p /dev/ttyUSB0 flash
 # Monitor the serial output (optional)
 idf.py -p /dev/ttyUSB0 monitor
 
+```
 ---
 
 ## Operating Modes
