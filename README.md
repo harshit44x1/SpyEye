@@ -1,11 +1,7 @@
 # 👁️ SpyEye: Advanced Network Reconnaissance and Attack Platform
+<img width="1280" height="442" alt="SpyEye_git_c" src="https://github.com/user-attachments/assets/8058e49e-5474-4624-9eb8-a9245cafc296" />
 
-<!-- 
-    ====================================================================================================
-    PROMINENT HEADER IMAGE PLACEHOLDER
-    The user will replace this with a high-resolution, professional header image.
-    ====================================================================================================
--->
+
 <p align="center">
   <img src="[YOUR_HIGH_RESOLUTION_HEADER_IMAGE_URL_HERE]" alt="SpyEye Platform Header Image" width="100%">
   <br>
@@ -126,7 +122,7 @@ The SpyEye platform is executed via the main Python script, which launches the i
 ### Launching the Platform
 
 ```bash
-python3 main.py
+sudo python3 main.py
 ```
 
 Upon execution, the system will perform an initial setup check, load the configuration from `config/config.yaml`, and present the main menu.
