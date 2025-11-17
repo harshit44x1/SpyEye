@@ -11,10 +11,10 @@
 <details>
   <summary><strong>Table of Contents</strong></summary>
   <ol>
-    <li><a href="#-architectural-overview-the-hashcat-converter">Architectural Overview (The Hashcat Converter)</a></li>
-    <li><a href="#-core-functionality-the-handshake-state-machine">Core Functionality (The Handshake State Machine)</a></li>
-    <li><a href="#-key-file-analysis">Key File Analysis</a></li>
-    <li><a href="#-public-api--dependencies">Public API & Dependencies</a></li>
+    <li><a href="#---architectural-overview-the-hashcat-converter">Architectural Overview (The Hashcat Converter)</a></li>
+    <li><a href="#--%EF%B8%8F-core-functionality-the-handshake-state-machine">Core Functionality (The Handshake State Machine)</a></li>
+    <li><a href="#--%EF%B8%8F-key-file-analysis">Key File Analysis</a></li>
+    <li><a href="#--%EF%B8%8F-public-api--dependencies">Public API & Dependencies</a></li>
   </ol>
 </details>
 
