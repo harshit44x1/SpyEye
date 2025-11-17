@@ -139,9 +139,11 @@ The following table and diagram illustrate the complex interaction between the C
 
 ---
 <details>
-<summary><strong><h2 style="color: #9C27B0; border-bottom: 2px solid #9C27B0; padding-bottom: 10px;">🛠️ Requirements and Deployment Guide (Click to Expand)</h2></strong></summary>
+<summary><strong>🛠️ Requirements and Deployment Guide (Click to Expand)</strong></summary>
 
-### Hardware Requirements (Mandatory for Full Functionality)
+<br> <h2 style="color: #4CAF50; border-bottom: 2px solid #4CAF50; padding-bottom: 10px;">
+  🛠️ Requirements and Deployment Guide
+</h2>### Hardware Requirements (Mandatory for Full Functionality)
 
 The framework's power is unlocked with the correct hardware configuration.
 
