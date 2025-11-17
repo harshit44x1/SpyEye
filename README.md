@@ -15,16 +15,16 @@
 ---
 
 <details>
-  <summary><strong>Table of Contents</strong></summary>
-  <ol>
-    <li><a href="#-legal-disclaimer-use-responsibly">Legal Disclaimer</a></li>
-    <li><a href="#-architectural-philosophy-the-hybrid-advantage">Architectural Philosophy</a></li>
-    <li><a href="#-core-attack-vectors-feature-deep-dive">Core Attack Vectors</a></li>
-    <li><a href="#-architectural-deep-dive-and-data-flow">Architectural Deep Dive</a></li>
-    <li><a href="#-requirements-and-deployment-guide">Requirements & Deployment</a></li>
-    <li><a href="#-contribution-and-community">Contribution & Community</a></li>
-    <li><a href="#-license">License</a></li>
-  </ol>
+<summary><strong>Table of Contents</strong></summary>
+<ol>
+<li><a href="#-legal-disclaimer-use-responsibly">Legal Disclaimer</a></li>
+<li><a href="#-architectural-philosophy-the-hybrid-advantage">Architectural Philosophy</a></li>
+<li><a href="#-core-attack-vectors-feature-deep-dive">Core Attack Vectors</a></li>
+<li><a href="#-architectural-deep-dive-and-data-flow">Architectural Deep Dive</a></li>
+<li><a href="#-requirements-and-deployment-guide">Requirements & Deployment</a></li>
+<li><a href="#-contribution-and-community">Contribution & Community</a></li>
+<li><a href="#-license">License</a></li>
+</ol>
 </details>
 
 <h2 style="color: #FF0000; border-bottom: 2px solid #FF0000; padding-bottom: 10px;">
