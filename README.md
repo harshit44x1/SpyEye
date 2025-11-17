@@ -2,20 +2,14 @@
 
 <img width="1280" height="442" alt="SpyEye_git_c" src="https://github.com/user-attachments/assets/e84b8df6-19d6-44e2-a74c-b5b6e57f2509" />
 
-
-<!-- 
-    ====================================================================================================
-    PROFESSIONAL BADGES
-    Using the user's preferred badge style (for-the-badge) and content.
-    ====================================================================================================
--->
 <p align="center">
-  <img src="https://img.shields.io/badge/Status-Active%20Development-brightgreen?style=for-the-badge" alt="Status: Active Development">
-  <img src="https://img.shields.io/badge/Author-Delta--Security-red?style=for-the-badge" alt="Author Delta-Security">
-  <img src="https://img.shields.io/badge/Python-3.10-blueviolet?style=for-the-badge" alt="Python 3.10">
-  <img src="https://img.shields.io/badge/Framework-Flask%20%7C%20ESP--IDF-orange?style=for-the-badge" alt="Frameworks">
-  <img src="https://img.shields.io/badge/License-MIT-green?style=for-the-badge" alt="License">
-  <img src="https://img.shields.io/badge/Interface-Rich%20CLI-blue?style=for-the-badge" alt="Interface: Rich CLI">
+  <img src="https://img.shields.io/badge/Status-Active%20Development-brightgreen?style=flat-square" alt="Status: Active Development">
+  <img src="https://img.shields.io/badge/Python-3.10-blueviolet?style=flat-square" alt="Python 3.10">
+  <img src="https://img.shields.io/badge/Framework-Flask%20%7C%20ESP--IDF-orange?style=flat-square" alt="Frameworks">
+  <img src="https://img.shields.io/badge/Interface-Rich%20CLI-blue?style=flat-square" alt="Interface: Rich CLI">
+  <img src="https://img.shields.io/badge/License-MIT-green?style=flat-square" alt="License">
+  <br>
+  <img src="https://img.shields.io/badge/Author-Delta--Security-red?style=flat-square" alt="Author Delta-Security">
 </p>
 
 ---
@@ -28,7 +22,7 @@
     <li><a href="#-core-attack-vectors-feature-deep-dive">Core Attack Vectors</a></li>
     <li><a href="#-architectural-deep-dive-and-data-flow">Architectural Deep Dive</a></li>
     <li><a href="#-requirements-and-deployment-guide">Requirements & Deployment</a></li>
-    <li><a href="#-contribution-and-community">Contribution</a></li>
+    <li><a href="#-contribution-and-community">Contribution & Community</a></li>
     <li><a href="#-license">License</a></li>
   </ol>
 </details>
