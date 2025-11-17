@@ -18,10 +18,10 @@ Before contributing, please take a minute to read our **[CODE_OF_CONDUCT.md](COD
 <details>
   <summary><strong>Table of Contents</strong></summary>
   <ol>
-    <li><a href="#-how-can-i-contribute">How Can I Contribute?</a></li>
-    <li><a href="#-setting-up-your-development-environment">Setting Up Your Development Environment</a></li>
-    <li><a href="#-pull-request-pr-workflow">Pull Request (PR) Workflow</a></li>
-    <li><a href="#-coding-style-guides">Coding Style Guides</a></li>
+    <li><a href="#-suggesting-enhancements-or-new-features">How Can I Contribute?</a></li>
+    <li><a href="#--%EF%B8%8F-setting-up-your-development-environment">Setting Up Your Development Environment</a></li>
+    <li><a href="#--pull-request-pr-workflow-">Pull Request (PR) Workflow</a></li>
+    <li><a href="#-%EF%B8%8F-coding-style-guides-">Coding Style Guides</a></li>
   </ol>
 </details>
 
