@@ -17,12 +17,12 @@
 <details>
 <summary><strong>Table of Contents</strong></summary>
 <ol>
-<li><a href="#-legal-disclaimer-use-responsibly">Legal Disclaimer</a></li>
-<li><a href="#-architectural-philosophy-the-hybrid-advantage">Architectural Philosophy</a></li>
-<li><a href="#-core-attack-vectors-feature-deep-dive">Core Attack Vectors</a></li>
-<li><a href="#-architectural-deep-dive-and-data-flow">Architectural Deep Dive</a></li>
-<li><a href="#-requirements-and-deployment-guide">Requirements & Deployment</a></li>
-<li><a href="#-contribution-and-community">Contribution & Community</a></li>
+<li><a href="#--%EF%B8%8F-legal-disclaimer-use-responsibly">Legal Disclaimer</a></li>
+<li><a href="#--architectural-philosophy-the-hybrid-advantage">Architectural Philosophy</a></li>
+<li><a href="#--%EF%B8%8F-core-attack-vectors-feature-deep-dive">Core Attack Vectors</a></li>
+<li><a href="#--%EF%B8%8F-core-attack-vectors-feature-deep-dive">Architectural Deep Dive</a></li>
+<li><a href="#--%EF%B8%8F-core-attack-vectors-feature-deep-dive">Requirements & Deployment</a></li>
+<li><a href="#---contribution-and-community">Contribution & Community</a></li>
 <li><a href="#%EF%B8%8F-license">License</a></li>
 </ol>
 </details>
