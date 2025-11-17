@@ -12,13 +12,26 @@
 <p align="center">
   <img src="https://img.shields.io/badge/Status-Active%20Development-brightgreen?style=for-the-badge" alt="Status: Active Development">
   <img src="https://img.shields.io/badge/Author-Delta--Security-red?style=for-the-badge" alt="Author Delta-Security">
-  <img src="https://img.shields.io/badge/Python-3.8+-blueviolet?style=for-the-badge" alt="Python 3.8+">
+  <img src="https://img.shields.io/badge/Python-3.10-blueviolet?style=for-the-badge" alt="Python 3.10">
   <img src="https://img.shields.io/badge/Framework-Flask%20%7C%20ESP--IDF-orange?style=for-the-badge" alt="Frameworks">
-  <img src="https://img.shields.io/badge/License-MIT%20(Pending)-green?style=for-the-badge" alt="License">
+  <img src="https://img.shields.io/badge/License-MIT-green?style=for-the-badge" alt="License">
   <img src="https://img.shields.io/badge/Interface-Rich%20CLI-blue?style=for-the-badge" alt="Interface: Rich CLI">
 </p>
 
 ---
+
+<details>
+  <summary><strong>Table of Contents</strong></summary>
+  <ol>
+    <li><a href="#-legal-disclaimer-use-responsibly">Legal Disclaimer</a></li>
+    <li><a href="#-architectural-philosophy-the-hybrid-advantage">Architectural Philosophy</a></li>
+    <li><a href="#-core-attack-vectors-feature-deep-dive">Core Attack Vectors</a></li>
+    <li><a href="#-architectural-deep-dive-and-data-flow">Architectural Deep Dive</a></li>
+    <li><a href="#-requirements-and-deployment-guide">Requirements & Deployment</a></li>
+    <li><a href="#-contribution-and-community">Contribution</a></li>
+    <li><a href="#-license">License</a></li>
+  </ol>
+</details>
 
 <h2 style="color: #FF0000; border-bottom: 2px solid #FF0000; padding-bottom: 10px;">
   ⚠️ Legal Disclaimer: Use Responsibly
@@ -145,9 +158,9 @@ The framework's power is unlocked with the correct hardware configuration.
 *   **Host C2 Machine:**
     *   1x **Linux Host** (Kali, Parrot OS recommended) with `sudo` / root privileges.
     *   2x **USB Wi-Fi Adapters**:
-        *   **Adapter 1 (Rogue AP):** Must support **AP mode** and `hostapd`.
-        *   **Adapter 2 (Internet Uplink):** Any standard Wi-Fi adapter (or Ethernet port) to provide an internet connection to the C2 host. This is used by `iptables` (NAT/Masquerade) to give internet access to authenticated victims.
-        *   **All Monitoring/Injection tasks are offloaded to the ESP32 Probe,** removing the need for expensive, specialized adapters on the host machine.
+    *   *   **Adapter 1 (Rogue AP):** Must support **AP mode** and `hostapd`.
+    *   *   **Adapter 2 (Internet Uplink):** Any standard Wi-Fi adapter (or Ethernet port) to provide an internet connection to the C2 host. This is used by `iptables` (NAT/Masquerade) to give internet access to authenticated victims.
+    *    *   **All Monitoring/Injection tasks are offloaded to the ESP32 Probe,** removing the need for expensive, specialized adapters on the host machine.
     *   *Recommended Models:* **TL-WN722N** / **TL-WN725N** (or similar chipsets with compatible drivers).
 *   **Driver Support:**
     *   The primary requirement for the C2 host is a driver compatible with `hostapd` (AP mode).
@@ -176,7 +189,7 @@ The framework's power is unlocked with the correct hardware configuration.
 
 #### Probe (ESP32)
 
-1.  **Espressif IDF (ESP-IDF):** Requires a working installation of the Espressif IoT Development Framework to build and flash the firmware.
+1.  **Espressif IDF (ESP-IDF):** Requires a working installation of the Espressif IoT Development Framework. **(This project is built and verified against ESP-IDF v4.4)**.
 
 ### Installation Workflow: Step-by-Step
 
