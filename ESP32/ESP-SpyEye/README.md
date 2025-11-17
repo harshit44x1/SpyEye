@@ -141,7 +141,7 @@ The probe can be used as a completely independent, "headless" attack tool.
 
 1.  Power on the flashed ESP32 (e.g., via a USB power bank).
 2.  On your phone or laptop, scan for Wi-Fi networks.
-3.  Connect to the **Management AP** (SSID and Password are set via `menuconfig`, default is `SpyEye AP` / `delta-sec-spyeye`).
+3.  Connect to the **SpyEye AP** (SSID and Password are set via `menuconfig`, default is `SpyEye AP` / `delta-sec-spyeye`).
 4.  Open a web browser and navigate to the server's IP: **`http://192.168.33.1`**.
 5.  You can now use the web interface to scan, configure, launch attacks, and download `.pcap` / `.hccapx` results directly.
 
