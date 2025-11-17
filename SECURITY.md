@@ -8,7 +8,7 @@ Security is a rapidly evolving field, and to ensure the safety of our users, we 
 
 | Version | Supported |
 | :--- | :--- |
-| **`main` branch (latest)** | :white_check_mark: |
+| **`main` 2.3.0 (latest)** | :white_check_mark: |
 | All previous versions | :x: |
 
 If you are not using the latest version, please upgrade before reporting a vulnerability to ensure it has not already been fixed.
