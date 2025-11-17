@@ -23,7 +23,7 @@
 <li><a href="#-architectural-deep-dive-and-data-flow">Architectural Deep Dive</a></li>
 <li><a href="#-requirements-and-deployment-guide">Requirements & Deployment</a></li>
 <li><a href="#-contribution-and-community">Contribution & Community</a></li>
-<li><a href="#-license">License</a></li>
+<li><a href="#%EF%B8%8F-license">License</a></li>
 </ol>
 </details>
 
