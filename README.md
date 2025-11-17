@@ -256,7 +256,7 @@ Please use the GitHub Issues tracker to report any bugs, suggest new features, o
 
 ## ⚖️ License
 
-This project is licensed under the **MIT License** - see the `LICENSE` file for details.
+This project is licensed under the **MIT License** - see the [`LICENSE`](https://github.com/Delta-Sec/SpyEye/tree/main?tab=MIT-1-ov-file) file for details.
 
 ---
 *Developed by Delta-Sec | Engineered for Precision and Performance*
