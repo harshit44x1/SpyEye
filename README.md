@@ -113,8 +113,8 @@ The following table and diagram illustrate the complex interaction between the C
 
 | Component | Technology Stack | Primary Responsibility | Data Ingestion/Output |
 | :--- | :--- | :--- | :--- |
-| **Python C2 (Host)** | Python 3.8+, Flask, Rich, PyYAML | Orchestration, Traffic Manipulation, Data Presentation, High-Level Logic. | Reads: `config.yaml`. Writes: `logs/captured_data.json`. |
-| **ESP32 Probe (Attacker)** | ESP-IDF, C/C++, 802.11 Stack | Low-Level Packet Injection, Frame Analysis, Hardware-Timed Attacks. | Reads: Serial Commands (from C2). Writes: Serial Data (Handshakes, Status). |
+| **Python C2 (Host)** | Python 3.10, Flask, Rich, PyYAML | Orchestration, Traffic Manipulation, Data Presentation, High-Level Logic. | Reads: `config.yaml`. Writes: `logs/captured_data.json`. |
+| **ESP32 Probe (Attacker)** | ESP-IDF, C, 802.11 Stack | Low-Level Packet Injection, Frame Analysis, Hardware-Timed Attacks. | Reads: Serial Commands (from C2). Writes: Serial Data (Handshakes, Status). |
 | **Network Infrastructure** | hostapd, dnsmasq, iptables | Rogue AP creation, DHCP/DNS services, Firewalling, Victim Isolation. | System-level configuration and traffic routing. |
 
 ### Architectural Diagram: C2-Probe Relationship
@@ -159,12 +159,11 @@ The framework's power is unlocked with the correct hardware configuration.
     *   1x **Linux Host** (Kali, Parrot OS recommended) with `sudo` / root privileges.
     *   2x **USB Wi-Fi Adapters**:
     *   *   **Adapter 1 (Rogue AP):** Must support **AP mode** and `hostapd`.
-    *   *   **Adapter 2 (Internet Uplink):** Any standard Wi-Fi adapter (or Ethernet port) to provide an internet connection to the C2 host. This is used by `iptables` (NAT/Masquerade) to give internet access to authenticated victims.
-    *    *   **All Monitoring/Injection tasks are offloaded to the ESP32 Probe,** removing the need for expensive, specialized adapters on the host machine.
+        * **Adapter 2 (Internet Uplink):** Any standard Wi-Fi adapter (or Ethernet port) to provide an internet connection to the C2 host. This is used by `iptables` (NAT/Masquerade) to give internet access to authenticated victims.
+        * **All Monitoring/Injection tasks are offloaded to the ESP32 Probe,** removing the need for expensive, specialized adapters on the host machine.
     *   *Recommended Models:* **TL-WN722N** / **TL-WN725N** (or similar chipsets with compatible drivers).
 *   **Driver Support:**
     *   The primary requirement for the C2 host is a driver compatible with `hostapd` (AP mode).
-    *   *Note:* Please replace `[DRIVER_REPO_NAME]` with the actual driver repository name.
     ```
     Driver for Packet Injection: [DRIVER_REPO_NAME]
     ```
@@ -203,11 +202,9 @@ cd SpyEye
 This step ensures the C2 has all the necessary system and Python libraries to manage the network infrastructure.
 
 ```bash
-# Install core Linux tools
 sudo apt update
 sudo apt install -y hostapd dnsmasq iptables
 
-# Install Python libraries
 pip3 install -r requirements.txt
 ```
 
