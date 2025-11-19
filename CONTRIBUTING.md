@@ -121,7 +121,7 @@ git push origin feature/my-awesome-feature
 
   * Explain what you changed and why.
 
-  * If you are fixing an existing issue, link it (e.g., "Closes #123").
+  * If you are fixing an existing issue, link it (e.g., "Closes #33").
 
 --- 
 <h2 style="color: #FF5722; border-bottom: 2px solid #FF5722; padding-bottom: 10px;"> ✍️ Coding Style Guides </h2>
